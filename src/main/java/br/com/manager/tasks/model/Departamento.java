@@ -7,35 +7,38 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TB_PESSOAS")
-public class Pessoa {
+@Table(name = "TB_DEPARTAMENTO")
+public class Departamento {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	private String nome;
+	private String titulo;
 	
-	public Pessoa(long id, String nome) {
+
+	public Departamento(long id, String titulo) {
 		super();
 		this.id = id;
-		this.nome = nome;
+		this.titulo = titulo;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
+	
+	
 
 }
