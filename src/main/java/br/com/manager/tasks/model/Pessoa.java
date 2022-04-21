@@ -9,15 +9,20 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "TB_PESSOAS")
 public class Pessoa {
-	
-	@Id 
+
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
+	private long id;
+
 	private String nome;
 	
 	
-	
+	public Pessoa(long id, String nome) {
+		super();
+		this.id = id;
+		this.nome = nome;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -33,7 +38,5 @@ public class Pessoa {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	
-	
+
 }
