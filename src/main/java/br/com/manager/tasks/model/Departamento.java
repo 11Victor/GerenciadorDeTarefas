@@ -1,10 +1,16 @@
 package br.com.manager.tasks.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "TB_DEPARTAMENTO")
@@ -16,6 +22,9 @@ public class Departamento {
 
 	private String titulo;
 	
+	@OneToMany(mappedBy = "departamento", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("departamento")
+	private List<Pessoa> pessoa;
 	
 	public long getId() {
 		return id;
@@ -32,13 +41,13 @@ public class Departamento {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	
-//	@OneToMany(mappedBy = "departamento", cascade = CascadeType.ALL)
-//	@JsonIgnoreProperties("departamento")
-//	private List<Pessoa> pessoa;
-	
-	
-	
-	
 
+	public List<Pessoa> getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(List<Pessoa> pessoa) {
+		this.pessoa = pessoa;
+	}
+	
 }

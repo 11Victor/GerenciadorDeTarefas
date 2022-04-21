@@ -6,9 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "TB_TAREFAS")
@@ -28,7 +30,11 @@ public class Tarefa {
 	private int duracao;
 	
 	private Boolean finalizado;
-
+	
+	@ManyToOne
+	@JsonIgnoreProperties("tarefa")
+	private Pessoa pessoa;
+	
 	public long getId() {
 		return id;
 	}
@@ -76,11 +82,13 @@ public class Tarefa {
 	public void setFinalizado(Boolean finalizado) {
 		this.finalizado = finalizado;
 	}
-	
-//	@ManyToOne
-//	@JsonIgnoreProperties("tarefa")
-//	private Pessoa pessoa;
 
-	
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
 	
 }
