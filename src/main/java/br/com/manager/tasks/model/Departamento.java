@@ -16,13 +16,7 @@ public class Departamento {
 
 	private String titulo;
 	
-
-	public Departamento(long id, String titulo) {
-		super();
-		this.id = id;
-		this.titulo = titulo;
-	}
-
+	
 	public long getId() {
 		return id;
 	}
@@ -38,6 +32,12 @@ public class Departamento {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+	
+//	@OneToMany(mappedBy = "departamento", cascade = CascadeType.ALL)
+//	@JsonIgnoreProperties("departamento")
+//	private List<Pessoa> pessoa;
+	
+	
 	
 	
 

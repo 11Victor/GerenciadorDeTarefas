@@ -16,17 +16,13 @@ public class Pessoa {
 
 	private String nome;
 	
-	public Pessoa(long id, String nome) {
-		super();
-		this.id = id;
-		this.nome = nome;
-	}
-
-	public Long getId() {
+	
+	
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -38,4 +34,16 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
+//	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.REMOVE)
+//	@JsonIgnoreProperties("pessoa")
+//	private List<Tarefa> tarefa;
+//	
+//	@ManyToOne
+//	@JsonIgnoreProperties("pessoa")
+//	private Departamento departamento;
+	
+	
+	
+	
+	
 }

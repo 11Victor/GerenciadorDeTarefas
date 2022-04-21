@@ -26,10 +26,23 @@ public class PessoaController {
 
 	@Autowired
 	private PessoaService pessoaService;
-	
+
 	@Autowired
 	private PessoaRepository pessoaRepository;
-	
+
+	// Buscar todas pessoas
+	@GetMapping("/get/pessoas/todas")
+	public ResponseEntity<List<Pessoa>> getAll() {
+		return ResponseEntity.ok(pessoaService.findAll());
+	}
+
+	// Buscar Pessoa por Id
+	@GetMapping("/get/pessoas/{id}")
+	public ResponseEntity<Pessoa> getById(@PathVariable long id) {
+		return pessoaService.findById(id).map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
+				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+	}
+
 	// Cadastrar Pessoa
 	@PostMapping("/post/pessoas")
 	public ResponseEntity<Pessoa> postPessoa(@RequestBody Pessoa pessoa) {
@@ -48,20 +61,6 @@ public class PessoaController {
 	@DeleteMapping("/delete/pessoas/{id}")
 	public void deletePessoa(@PathVariable long id) {
 		pessoaRepository.deleteById(id);
-	}
-	
-	// Buscar todas pessoas
-	@GetMapping("/get/pessoas/todas")
-	public ResponseEntity<List<Pessoa>> getAll() {
-		return ResponseEntity.ok(pessoaService.findAll());
-	}
-
-	// Buscar Pessoa por Id
-	@GetMapping("/{id}")
-	public ResponseEntity<Pessoa> getById(@PathVariable long id) {
-		return pessoaService.findById(id).map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
-				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
-
 	}
 
 }
