@@ -28,17 +28,6 @@ public class Tarefa {
 	private int duracao;
 	
 	private Boolean finalizado;
-	
-	
-	public Tarefa(long id, String titulo, String descricao, LocalDate prazo, int duracao, Boolean finalizado) {
-		super();
-		this.id = id;
-		this.titulo = titulo;
-		this.descricao = descricao;
-		this.prazo = prazo;
-		this.duracao = duracao;
-		this.finalizado = finalizado;
-	}
 
 	public long getId() {
 		return id;
@@ -88,9 +77,10 @@ public class Tarefa {
 		this.finalizado = finalizado;
 	}
 	
-	
-	
-	
+//	@ManyToOne
+//	@JsonIgnoreProperties("tarefa")
+//	private Pessoa pessoa;
+
 	
 	
 }

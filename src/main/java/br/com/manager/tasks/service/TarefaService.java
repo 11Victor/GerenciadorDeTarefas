@@ -21,6 +21,11 @@ public class TarefaService {
 		return Optional.of(tarefaRepository.save(tarefa));
 	}
 
+	// Editar pessoa
+	public Optional<Tarefa> putTarefa(@RequestBody Tarefa tarefa) {
+		return Optional.of(tarefaRepository.save(tarefa));
+	}
+
 	// Buscar todas tarefas
 	public List<Tarefa> findAll() {
 		return tarefaRepository.findAll();
