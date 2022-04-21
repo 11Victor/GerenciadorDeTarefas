@@ -1,10 +1,14 @@
 package br.com.manager.tasks.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "TB_TAREFAS")
@@ -18,14 +22,15 @@ public class Tarefa {
 	
 	private String descricao;
 	
-	private String prazo;
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private LocalDate prazo;
 	
-	private String duracao;
+	private int duracao;
 	
-	private String finalizado;
+	private Boolean finalizado;
 	
 	
-	public Tarefa(long id, String titulo, String descricao, String prazo, String duracao, String finalizado) {
+	public Tarefa(long id, String titulo, String descricao, LocalDate prazo, int duracao, Boolean finalizado) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
@@ -35,11 +40,11 @@ public class Tarefa {
 		this.finalizado = finalizado;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -59,29 +64,32 @@ public class Tarefa {
 		this.descricao = descricao;
 	}
 
-	public String getPrazo() {
+	public LocalDate getPrazo() {
 		return prazo;
 	}
 
-	public void setPrazo(String prazo) {
+	public void setPrazo(LocalDate prazo) {
 		this.prazo = prazo;
 	}
 
-	public String getDuracao() {
+	public int getDuracao() {
 		return duracao;
 	}
 
-	public void setDuracao(String duracao) {
+	public void setDuracao(int duracao) {
 		this.duracao = duracao;
 	}
 
-	public String getFinalizado() {
+	public Boolean getFinalizado() {
 		return finalizado;
 	}
 
-	public void setFinalizado(String finalizado) {
+	public void setFinalizado(Boolean finalizado) {
 		this.finalizado = finalizado;
 	}
+	
+	
+	
 	
 	
 	
