@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.manager.tasks.dto.DepartamentoDTO;
 import br.com.manager.tasks.model.Departamento;
 import br.com.manager.tasks.repository.DepartamentoRepository;
 import br.com.manager.tasks.service.DepartamentoService;
@@ -38,16 +39,16 @@ public class DepartamentoController {
 
 	// Cadastrar departamento
 	@PostMapping("/post/departamento")
-	public ResponseEntity<Departamento> postDepartamento(@RequestBody Departamento departamento) {
-		return departamentoService.postDepartamento(departamento)
+	public ResponseEntity<Departamento> postDepartamento(@RequestBody DepartamentoDTO dto) {
+		return departamentoService.postDepartamento(dto)
 				.map(resp -> ResponseEntity.status(HttpStatus.CREATED).body(resp))
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 
 	// Editar departamento
 	@PutMapping("/put/departamento/{id}")
-	public ResponseEntity<Departamento> putDepartamento(@RequestBody Departamento departamento) {
-		return departamentoService.putDepartamento(departamento)
+	public ResponseEntity<Departamento> putDepartamento(@RequestBody DepartamentoDTO dto, long id) {
+		return departamentoService.putDepartamento(dto, id)
 				.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
