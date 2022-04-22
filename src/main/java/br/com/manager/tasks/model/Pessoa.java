@@ -1,5 +1,6 @@
 package br.com.manager.tasks.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,7 +16,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "TB_PESSOAS")
-public class Pessoa {
+public class Pessoa implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,9 +31,18 @@ public class Pessoa {
 	
 	@ManyToOne
 	@JsonIgnoreProperties("pessoa")
-	private Departamento departamento;
+	private Departamento idDepartamento;
 	
-	
+	public Pessoa(String nome, Departamento departamento) {
+		super();
+		this.nome = nome;
+		this.idDepartamento = departamento;
+	}
+
+	public Pessoa() {
+		super();
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -56,12 +67,12 @@ public class Pessoa {
 		this.tarefa = tarefa;
 	}
 
-	public Departamento getDepartamento() {
-		return departamento;
+	public Departamento getIdDepartamento() {
+		return idDepartamento;
 	}
 
-	public void setDepartamento(Departamento departamento) {
-		this.departamento = departamento;
+	public void setIdDepartamento(Departamento idDepartamento) {
+		this.idDepartamento = idDepartamento;
 	}
-	
+
 }

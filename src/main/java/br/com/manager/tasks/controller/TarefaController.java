@@ -31,7 +31,7 @@ public class TarefaController {
 	private TarefaRepository tarefaRepository;
 
 	// Buscar todas tarefas
-	@GetMapping("/get/tarefas/todas")
+	@GetMapping("/get/tarefas/all")
 	public ResponseEntity<List<Tarefa>> getAll() {
 		return ResponseEntity.ok(tarefaService.findAll());
 	}

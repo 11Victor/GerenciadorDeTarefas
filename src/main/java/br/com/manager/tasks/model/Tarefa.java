@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -27,6 +29,7 @@ public class Tarefa {
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate prazo;
 	
+	@NotBlank
 	private int duracao;
 	
 	private Boolean finalizado;
@@ -34,6 +37,23 @@ public class Tarefa {
 	@ManyToOne
 	@JsonIgnoreProperties("tarefa")
 	private Pessoa pessoa;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("tarefa")
+	@NotNull
+	private Departamento idDepartamento;
+	
+	public Tarefa(String titulo, String descricao, LocalDate prazo, int duracao, Departamento departamento) {
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.prazo = prazo;
+		this.duracao = duracao;
+		this.idDepartamento = departamento;
+	}
+	
+	public Tarefa() {
+		
+	}
 	
 	public long getId() {
 		return id;
@@ -90,5 +110,15 @@ public class Tarefa {
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
+
+	public Departamento getIdDepartamento() {
+		return idDepartamento;
+	}
+
+	public void setIdDepartamento(Departamento idDepartamento) {
+		this.idDepartamento = idDepartamento;
+	}
+
+	
 	
 }

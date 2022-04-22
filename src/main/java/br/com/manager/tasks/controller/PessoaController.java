@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.manager.tasks.dto.PessoaDTO;
 import br.com.manager.tasks.model.Pessoa;
 import br.com.manager.tasks.repository.PessoaRepository;
 import br.com.manager.tasks.service.PessoaService;
@@ -31,29 +32,22 @@ public class PessoaController {
 	private PessoaRepository pessoaRepository;
 
 	// Buscar todas pessoas
-	@GetMapping("/get/pessoas/todas")
+	@GetMapping("/get/pessoas/all")
 	public ResponseEntity<List<Pessoa>> getAll() {
 		return ResponseEntity.ok(pessoaService.findAll());
 	}
 
-	// Buscar Pessoa por Id
-	@GetMapping("/get/pessoas/{id}")
-	public ResponseEntity<Pessoa> getById(@PathVariable long id) {
-		return pessoaService.findById(id).map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
-				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
-	}
-
 	// Cadastrar Pessoa
 	@PostMapping("/post/pessoas")
-	public ResponseEntity<Pessoa> postPessoa(@RequestBody Pessoa pessoa) {
-		return pessoaService.postPessoa(pessoa).map(resp -> ResponseEntity.status(HttpStatus.CREATED).body(resp))
+	public ResponseEntity<Pessoa> postPessoa(@RequestBody PessoaDTO dto) {
+		return pessoaService.postPessoa(dto).map(resp -> ResponseEntity.status(HttpStatus.CREATED).body(resp))
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 
 	// Editar Pessoa
 	@PutMapping("/put/pessoas/{id}")
-	public ResponseEntity<Pessoa> putPessoa(@RequestBody Pessoa pessoa) {
-		return pessoaService.putPessoa(pessoa).map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
+	public ResponseEntity<Pessoa> putPessoa(@RequestBody PessoaDTO dto, @PathVariable("id") long id) {
+		return pessoaService.putPessoa(dto, id).map(resp -> ResponseEntity.status(HttpStatus.CREATED).body(resp))
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 

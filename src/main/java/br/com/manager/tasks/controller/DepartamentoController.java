@@ -31,7 +31,7 @@ public class DepartamentoController {
 	private DepartamentoRepository departamentoRepository;
 
 	// Buscar todos departamento
-	@GetMapping("/get/departamento/todos")
+	@GetMapping("/get/departamento/all")
 	public ResponseEntity<List<Departamento>> getAll() {
 		return ResponseEntity.ok(departamentoService.findAll());
 	}
