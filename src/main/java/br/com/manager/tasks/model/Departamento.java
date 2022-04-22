@@ -22,9 +22,21 @@ public class Departamento {
 
 	private String titulo;
 	
-	@OneToMany(mappedBy = "departamento", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("departamento")
+	@OneToMany(mappedBy = "idDepartamento", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("idDepartamento")
 	private List<Pessoa> pessoa;
+	
+	@OneToMany(mappedBy = "idDepartamento", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("idDepartamento")
+	private List<Tarefa> tarefa;
+	
+	public Departamento(String titulo) {
+		this.titulo = titulo;
+	}
+	
+	public Departamento() {
+		
+	}
 	
 	public long getId() {
 		return id;
@@ -48,6 +60,14 @@ public class Departamento {
 
 	public void setPessoa(List<Pessoa> pessoa) {
 		this.pessoa = pessoa;
+	}
+
+	public List<Tarefa> getTarefa() {
+		return tarefa;
+	}
+
+	public void setTarefa(List<Tarefa> tarefa) {
+		this.tarefa = tarefa;
 	}
 	
 }
