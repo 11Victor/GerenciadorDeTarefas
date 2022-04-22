@@ -32,7 +32,7 @@ public class Tarefa {
 	@NotBlank
 	private int duracao;
 	
-	private Boolean finalizado;
+	private Boolean finalizado=false;
 	
 	@ManyToOne
 	@JsonIgnoreProperties("tarefa")
