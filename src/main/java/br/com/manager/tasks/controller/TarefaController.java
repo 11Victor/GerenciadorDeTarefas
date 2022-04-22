@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.manager.tasks.dto.TarefaDTO;
 import br.com.manager.tasks.model.Tarefa;
 import br.com.manager.tasks.repository.TarefaRepository;
 import br.com.manager.tasks.service.TarefaService;
@@ -38,15 +39,15 @@ public class TarefaController {
 
 	// Cadastrar tarefa
 	@PostMapping("/post/tarefas")
-	public ResponseEntity<Tarefa> postTarefa(@RequestBody Tarefa tarefa) {
-		return tarefaService.postTarefa(tarefa).map(resp -> ResponseEntity.status(HttpStatus.CREATED).body(resp))
+	public ResponseEntity<Tarefa> postTarefa(@RequestBody TarefaDTO dto) {
+		return tarefaService.postTarefa(dto).map(resp -> ResponseEntity.status(HttpStatus.CREATED).body(resp))
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 
 	// Editar tarefa
-	@PutMapping("/put/tarefa/{id}")
-	public ResponseEntity<Tarefa> putTarefa(@RequestBody Tarefa tarefa) {
-		return tarefaService.putTarefa(tarefa).map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
+	@PutMapping("/put/tarefas/{id}")
+	public ResponseEntity<Tarefa> putTarefa(@RequestBody TarefaDTO dto, @PathVariable("id") long id) {
+		return tarefaService.putTarefa(dto, id).map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 

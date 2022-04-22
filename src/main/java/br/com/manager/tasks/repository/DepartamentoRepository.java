@@ -10,6 +10,6 @@ import br.com.manager.tasks.model.Departamento;
 @Repository
 public interface DepartamentoRepository extends JpaRepository<Departamento, Long>{
 	
-	public List<Departamento> findAllByTituloContainingIgnoreCase(String titulo);
+	public List<Departamento> findAllByTitulo(String titulo);
 	
 }

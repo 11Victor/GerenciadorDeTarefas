@@ -26,16 +26,23 @@ public class PessoaService {
 
 	// Cadastrar nova pessoa
 	public Optional<Pessoa> postPessoa(@RequestBody PessoaDTO dto) {
-		Departamento departamento = new Departamento();
-		departamento.setId(dto.getIdDepartamento());
-		Pessoa pessoa = new Pessoa(dto.getNome(), departamento);
-		return Optional.of(pessoaRepository.save(pessoa));
+		if (pessoaRepository.findAllByNome(dto.getNome()).isEmpty()
+				&& departamentoRepository.findById(dto.getIdDepartamento()).isPresent()) {
+			Departamento departamento = new Departamento();
+			departamento.setId(dto.getIdDepartamento());
+			Pessoa pessoa = new Pessoa(dto.getNome(), departamento);
+			return Optional.of(pessoaRepository.save(pessoa));
+		} else {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+					"Possiveis erros: Nome de Usuário já existente ou Departamento não localizado!!!!", null);
+		}
 	}
 
 	// Editar pessoa
 	public Optional<Pessoa> putPessoa(@RequestBody PessoaDTO dto, long id) {
 
-		if (pessoaRepository.findById(id).isPresent() && departamentoRepository.findById(dto.getIdDepartamento()).isPresent()) {
+		if (pessoaRepository.findById(id).isPresent()
+				&& departamentoRepository.findById(dto.getIdDepartamento()).isPresent()) {
 			Pessoa pessoa = pessoaRepository.getById(id);
 			Departamento departamento = new Departamento();
 			departamento.setId(dto.getIdDepartamento());
@@ -43,7 +50,7 @@ public class PessoaService {
 			pessoa.setIdDepartamento(departamento);
 
 			return Optional.of(pessoaRepository.save(pessoa));
-			
+
 		} else {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Dados incorretos!!!!", null);
 		}
@@ -53,5 +60,5 @@ public class PessoaService {
 	public List<Pessoa> findAll() {
 		return pessoaRepository.findAll();
 	}
-	
+
 }

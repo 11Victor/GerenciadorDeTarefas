@@ -8,10 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -26,10 +23,8 @@ public class Tarefa {
 	
 	private String descricao;
 	
-	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate prazo;
 	
-	@NotBlank
 	private int duracao;
 	
 	private Boolean finalizado=false;
@@ -40,7 +35,6 @@ public class Tarefa {
 	
 	@ManyToOne
 	@JsonIgnoreProperties("tarefa")
-	@NotNull
 	private Departamento idDepartamento;
 	
 	public Tarefa(String titulo, String descricao, LocalDate prazo, int duracao, Departamento departamento) {

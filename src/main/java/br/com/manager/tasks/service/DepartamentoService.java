@@ -21,11 +21,9 @@ public class DepartamentoService {
 
 	// Cadastrar novo departamento
 	public Optional<Departamento> postDepartamento(@RequestBody DepartamentoDTO dto) {
-		if(departamentoRepository.findAllByTituloContainingIgnoreCase(dto.getTitulo()).isEmpty()) {
+		if(departamentoRepository.findAllByTitulo(dto.getTitulo()).isEmpty()) {
 			Departamento departamento = new Departamento(dto.getTitulo());
-			
-			return Optional.of(departamentoRepository.save(departamento));
-			
+			return Optional.of(departamentoRepository.save(departamento));	
 		} else {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Dados incorretos ou departamento já existente!!!!", null);
 		}
@@ -36,9 +34,7 @@ public class DepartamentoService {
 		if(departamentoRepository.findById(id).isPresent()) {
 			Departamento departamento = departamentoRepository.getById(id);
 			departamento.setTitulo(dto.getTitulo());
-			
 			return Optional.of(departamentoRepository.save(departamento));
-			
 		} else {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Dados incorretos!!!!", null);
 		}
