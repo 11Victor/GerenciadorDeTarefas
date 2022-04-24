@@ -2,6 +2,7 @@ package br.com.manager.tasks.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.manager.tasks.dto.PessoaDTO;
+import br.com.manager.tasks.dto.PessoaHorasDTO;
 import br.com.manager.tasks.model.Departamento;
 import br.com.manager.tasks.model.Pessoa;
 import br.com.manager.tasks.repository.DepartamentoRepository;
@@ -22,7 +24,7 @@ public class PessoaService {
 	private PessoaRepository pessoaRepository;
 
 	@Autowired
-	DepartamentoRepository departamentoRepository;
+	private DepartamentoRepository departamentoRepository;
 
 	// Cadastrar nova pessoa
 	public Optional<Pessoa> postPessoa(@RequestBody PessoaDTO dto) {
@@ -55,9 +57,11 @@ public class PessoaService {
 		}
 	}
 
-	// Buscar todas pessoas
-	public List<Pessoa> findAll() {
-		return pessoaRepository.findAll();
+	// Listar pessoas trazendo nome, departamento, total horas gastas nas tarefas
+	public List<PessoaHorasDTO> listarPessoas() {
+		List<PessoaHorasDTO> PessoaHorasDTO = pessoaRepository.findAll().stream().map(x -> new PessoaHorasDTO(x))
+				.collect(Collectors.toList());
+		return PessoaHorasDTO;
 	}
 
 }

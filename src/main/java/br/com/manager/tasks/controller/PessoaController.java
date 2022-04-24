@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.manager.tasks.dto.PessoaDTO;
+import br.com.manager.tasks.dto.PessoaHorasDTO;
 import br.com.manager.tasks.model.Pessoa;
 import br.com.manager.tasks.repository.PessoaRepository;
 import br.com.manager.tasks.service.PessoaService;
@@ -30,11 +31,11 @@ public class PessoaController {
 
 	@Autowired
 	private PessoaRepository pessoaRepository;
-
-	// Buscar todas pessoas
-	@GetMapping("/get/pessoas/all")
-	public ResponseEntity<List<Pessoa>> getAll() {
-		return ResponseEntity.ok(pessoaService.findAll());
+	
+	// Listar pessoas trazendo nome, departamento, total horas gastas nas tarefas
+	@GetMapping("/get/pessoas")
+	public ResponseEntity<List<PessoaHorasDTO>> findAll() {
+		return ResponseEntity.ok(pessoaService.listarPessoas());
 	}
 
 	// Cadastrar Pessoa
