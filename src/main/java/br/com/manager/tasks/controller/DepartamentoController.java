@@ -47,7 +47,7 @@ public class DepartamentoController {
 
 	// Editar departamento
 	@PutMapping("/put/departamento/{id}")
-	public ResponseEntity<Departamento> putDepartamento(@RequestBody DepartamentoDTO dto, long id) {
+	public ResponseEntity<Departamento> putDepartamento(@RequestBody DepartamentoDTO dto,@PathVariable("id") long id) {
 		return departamentoService.putDepartamento(dto, id)
 				.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
@@ -55,7 +55,7 @@ public class DepartamentoController {
 
 	// Deletar departamento
 	@DeleteMapping("/delete/departamento/{id}")
-	public void deleteDepartamento(@PathVariable long id) {
+	public void deleteDepartamento(@PathVariable("id") long id) {
 		departamentoRepository.deleteById(id);
 	}
 

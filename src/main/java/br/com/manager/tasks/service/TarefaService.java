@@ -9,10 +9,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
+import br.com.manager.tasks.dto.IDTarefaDTO;
 import br.com.manager.tasks.dto.TarefaDTO;
 import br.com.manager.tasks.model.Departamento;
+import br.com.manager.tasks.model.Pessoa;
 import br.com.manager.tasks.model.Tarefa;
 import br.com.manager.tasks.repository.DepartamentoRepository;
+import br.com.manager.tasks.repository.PessoaRepository;
 import br.com.manager.tasks.repository.TarefaRepository;
 
 @Service
@@ -23,6 +26,9 @@ public class TarefaService {
 
 	@Autowired
 	DepartamentoRepository departamentoRepository;
+
+	@Autowired
+	PessoaRepository pessoaRepository;
 
 	// Cadastrar nova tarefa
 	public Optional<Tarefa> postTarefa(@RequestBody TarefaDTO dto) {
@@ -55,6 +61,33 @@ public class TarefaService {
 		} else {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
 					"Possiveis erros: Nome da Tarefa já existente ou Departamento não localizado!!!!", null);
+		}
+	}
+
+	// Alocar uma pessoa na tarefa que tenha o mesmo departamento
+	public Optional<IDTarefaDTO> alocarPessoaTarefa(@RequestBody IDTarefaDTO alocarDTO, long id) {
+		Tarefa tarefa = tarefaRepository.getById(alocarDTO.getIdTarefa());
+		Pessoa pessoa = pessoaRepository.getById(id);
+		if (tarefaRepository.findById(id).isPresent() && pessoaRepository.findById(id).isPresent()
+				&& tarefa.getIdDepartamento() == pessoa.getIdDepartamento()) {
+			tarefa.setPessoa(pessoa);
+			Optional.of(tarefaRepository.save(tarefa));
+			return Optional.of(alocarDTO);
+		} else {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+					"Possiveis erros: Departamentos diferentes ou não encontrado pessoa/tarefa!!!!", null);
+		}
+	}
+
+	// Finalizar a tarefa
+	public Optional<Long> finalizarTarefa(long finalizarTarefa) {
+		if (tarefaRepository.findById(finalizarTarefa).isPresent()) {
+			Tarefa tarefa = tarefaRepository.getById(finalizarTarefa);
+			tarefa.setFinalizado(true);
+			Optional.of(tarefaRepository.save(tarefa));
+			return Optional.of(finalizarTarefa);
+		} else {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "ID não localizado!!!!", null);
 		}
 	}
 

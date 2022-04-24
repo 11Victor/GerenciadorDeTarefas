@@ -26,7 +26,7 @@ public class TarefaDTO implements Serializable{
 	@NotBlank
 	private int duracao;
 	
-	@NotNull
+	@NotBlank
 	private long idDepartamento;
 	
 	public TarefaDTO(Tarefa tarefa) {

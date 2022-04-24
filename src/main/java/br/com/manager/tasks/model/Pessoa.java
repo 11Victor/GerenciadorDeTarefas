@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -26,11 +27,12 @@ public class Pessoa implements Serializable{
 	private String nome;
 	
 	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("pessoa")
+	@JsonIgnoreProperties({"pessoa", "idDepartamento"})
 	private List<Tarefa> tarefa;
 	
 	@ManyToOne
-	@JsonIgnoreProperties("pessoa")
+	@JsonIgnoreProperties({"pessoa", "tarefa"})
+	@JoinColumn(name = "idDepartamento")
 	private Departamento idDepartamento;
 	
 	public Pessoa(String nome, Departamento departamento) {
