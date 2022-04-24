@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.manager.tasks.dto.IDTarefaDTO;
 import br.com.manager.tasks.dto.TarefaDTO;
 import br.com.manager.tasks.model.Tarefa;
 import br.com.manager.tasks.repository.TarefaRepository;
@@ -50,10 +51,24 @@ public class TarefaController {
 		return tarefaService.putTarefa(dto, id).map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
-
+	
+	// Alocar uma pessoa na tarefa que tenha o mesmo departamento
+	@PutMapping("/put/tarefas/alocar/{id}")
+	public ResponseEntity<IDTarefaDTO> alocarPessoaTarefa(@RequestBody IDTarefaDTO alocarDTO, @PathVariable("id") long id) {
+		return tarefaService.alocarPessoaTarefa(alocarDTO, id).map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
+				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
+	}
+	
+	// Finalizar a tarefa
+	@PutMapping("/put/tarefas/finalizar/{id}")
+	public ResponseEntity<Long> finalizarTarefa(@PathVariable("id") long finalizarTarefa) {
+		return tarefaService.finalizarTarefa(finalizarTarefa).map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
+				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
+	}
+	
 	// Deletar tarefa
 	@DeleteMapping("/delete/tarefa/{id}")
-	public void deleteTarefa(@PathVariable long id) {
+	public void deleteTarefa(@PathVariable("id") long id) {
 		tarefaRepository.deleteById(id);
 	}
 

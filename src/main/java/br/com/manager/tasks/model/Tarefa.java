@@ -1,11 +1,13 @@
 package br.com.manager.tasks.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -13,7 +15,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "TB_TAREFAS")
-public class Tarefa {
+public class Tarefa implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,11 +33,13 @@ public class Tarefa {
 	private Boolean finalizado=false;
 	
 	@ManyToOne
-	@JsonIgnoreProperties("tarefa")
+	@JsonIgnoreProperties({"tarefa", "idDepartamento"})
+	@JoinColumn(name = "pessoa")
 	private Pessoa pessoa;
 	
 	@ManyToOne
-	@JsonIgnoreProperties("tarefa")
+	@JsonIgnoreProperties({"tarefa", "pessoa"})
+	@JoinColumn(name = "idDepartamento")
 	private Departamento idDepartamento;
 	
 	public Tarefa(String titulo, String descricao, LocalDate prazo, int duracao, Departamento departamento) {

@@ -26,8 +26,7 @@ public class PessoaService {
 
 	// Cadastrar nova pessoa
 	public Optional<Pessoa> postPessoa(@RequestBody PessoaDTO dto) {
-		if (pessoaRepository.findAllByNome(dto.getNome()).isEmpty()
-				&& departamentoRepository.findById(dto.getIdDepartamento()).isPresent()) {
+		if (departamentoRepository.findById(dto.getIdDepartamento()).isPresent()) {
 			Departamento departamento = new Departamento();
 			departamento.setId(dto.getIdDepartamento());
 			Pessoa pessoa = new Pessoa(dto.getNome(), departamento);

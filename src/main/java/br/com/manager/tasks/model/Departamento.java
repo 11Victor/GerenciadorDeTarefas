@@ -1,5 +1,6 @@
 package br.com.manager.tasks.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,7 +15,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "TB_DEPARTAMENTO")
-public class Departamento {
+public class Departamento implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,11 +25,11 @@ public class Departamento {
 	private String titulo;
 	
 	@OneToMany(mappedBy = "idDepartamento", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("idDepartamento")
+	@JsonIgnoreProperties({"idDepartamento", "tarefa"})
 	private List<Pessoa> pessoa;
 	
 	@OneToMany(mappedBy = "idDepartamento", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("idDepartamento")
+	@JsonIgnoreProperties({"idDepartamento", "pessoa"})
 	private List<Tarefa> tarefa;
 	
 	public Departamento(String titulo) {
