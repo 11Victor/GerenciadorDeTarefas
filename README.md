@@ -20,7 +20,7 @@
  <a href="#about">About</a> •
  <a href="#features">Features</a> •
  <a href="#technologies">Technologies</a> • 
- <a href="#documentation">Documentation</a> • 
+ <a href="#documentation">Documentation</a>
  
 </p>
 
