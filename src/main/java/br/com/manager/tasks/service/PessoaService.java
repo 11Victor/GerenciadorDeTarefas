@@ -12,6 +12,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.com.manager.tasks.dto.PessoaDTO;
 import br.com.manager.tasks.dto.PessoaHorasDTO;
+import br.com.manager.tasks.dto.PessoaMediaDTO;
+import br.com.manager.tasks.dto.PessoaMediaRetornoDTO;
 import br.com.manager.tasks.model.Departamento;
 import br.com.manager.tasks.model.Pessoa;
 import br.com.manager.tasks.repository.DepartamentoRepository;
@@ -62,6 +64,14 @@ public class PessoaService {
 		List<PessoaHorasDTO> PessoaHorasDTO = pessoaRepository.findAll().stream().map(x -> new PessoaHorasDTO(x))
 				.collect(Collectors.toList());
 		return PessoaHorasDTO;
+	}
+
+	// Buscar pessoas por nome e retorna média de horas gastas por tarefa
+	public List<PessoaMediaRetornoDTO> buscarPessoaMediaHoras(PessoaMediaDTO pessoaEntrada) {
+		List<PessoaMediaRetornoDTO> PessoaMediaRetornoDTO = pessoaRepository
+				.findAllByNomeContainingIgnoreCase(pessoaEntrada.getNome()).stream()
+				.map(x -> new PessoaMediaRetornoDTO(x)).collect(Collectors.toList());
+		return PessoaMediaRetornoDTO;
 	}
 
 }

@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.manager.tasks.dto.PessoaDTO;
 import br.com.manager.tasks.dto.PessoaHorasDTO;
+import br.com.manager.tasks.dto.PessoaMediaDTO;
+import br.com.manager.tasks.dto.PessoaMediaRetornoDTO;
 import br.com.manager.tasks.model.Pessoa;
 import br.com.manager.tasks.repository.PessoaRepository;
 import br.com.manager.tasks.service.PessoaService;
@@ -31,11 +33,17 @@ public class PessoaController {
 
 	@Autowired
 	private PessoaRepository pessoaRepository;
-	
+
 	// Listar pessoas trazendo nome, departamento, total horas gastas nas tarefas
 	@GetMapping("/get/pessoas")
 	public ResponseEntity<List<PessoaHorasDTO>> findAll() {
 		return ResponseEntity.ok(pessoaService.listarPessoas());
+	}
+
+	// Buscar pessoas por nome e retorna média de horas gastas por tarefa.
+	@GetMapping("/get/pessoas/gastos")
+	public ResponseEntity<List<PessoaMediaRetornoDTO>> findByNomeMediaHoras(@RequestBody PessoaMediaDTO pessoaEntrada) {
+		return ResponseEntity.ok(pessoaService.buscarPessoaMediaHoras(pessoaEntrada));
 	}
 
 	// Cadastrar Pessoa
