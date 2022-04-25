@@ -22,7 +22,7 @@ public class SwaggerConfig {
 
 	@Bean
 	public Docket api() {
-		return new Docket(DocumentationType.OAS_30).select()
+		return new Docket(DocumentationType.SWAGGER_2).select()
 				.apis(RequestHandlerSelectors.basePackage("br.com.manager.tasks.controller"))
 				.paths(PathSelectors.any()).build().apiInfo(metadata()).useDefaultResponseMessages(false)
 				.globalResponses(HttpMethod.GET, responseMessage())
