@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.manager.tasks.dto.IDTarefaDTO;
+import br.com.manager.tasks.dto.TarefaIdDTO;
 import br.com.manager.tasks.dto.TarefaDTO;
 import br.com.manager.tasks.model.Tarefa;
 import br.com.manager.tasks.repository.TarefaRepository;
@@ -54,7 +54,7 @@ public class TarefaController {
 	
 	// Alocar uma pessoa na tarefa que tenha o mesmo departamento
 	@PutMapping("/put/tarefas/alocar/{id}")
-	public ResponseEntity<IDTarefaDTO> alocarPessoaTarefa(@RequestBody IDTarefaDTO alocarDTO, @PathVariable("id") long id) {
+	public ResponseEntity<TarefaIdDTO> alocarPessoaTarefa(@RequestBody TarefaIdDTO alocarDTO, @PathVariable("id") long id) {
 		return tarefaService.alocarPessoaTarefa(alocarDTO, id).map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
