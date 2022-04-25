@@ -2,6 +2,7 @@ package br.com.manager.tasks.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
+import br.com.manager.tasks.dto.DepartamentoCountDTO;
 import br.com.manager.tasks.dto.DepartamentoDTO;
 import br.com.manager.tasks.model.Departamento;
 import br.com.manager.tasks.repository.DepartamentoRepository;
@@ -39,7 +41,14 @@ public class DepartamentoService {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Dados incorretos!!!!", null);
 		}
 	}
-
+	
+	// Listar departamento e quantidade de pessoas e tarefas
+	public List<DepartamentoCountDTO> listarDepartamentos() {
+		List<DepartamentoCountDTO> DepartamentoCountDTO = departamentoRepository.findAll().stream().map(x -> new DepartamentoCountDTO(x))
+				.collect(Collectors.toList());
+		return DepartamentoCountDTO;
+	}
+	
 	// Buscar todas pessoas
 	public List<Departamento> findAll() {
 		return departamentoRepository.findAll();

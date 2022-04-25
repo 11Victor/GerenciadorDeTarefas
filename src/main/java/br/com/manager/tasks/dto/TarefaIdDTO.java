@@ -6,18 +6,18 @@ import javax.validation.constraints.NotBlank;
 
 import br.com.manager.tasks.model.Tarefa;
 
-public class IDTarefaDTO implements Serializable{
+public class TarefaIdDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@NotBlank
 	private long idTarefa;
 	
-	public IDTarefaDTO(Tarefa tarefa) {
+	public TarefaIdDTO(Tarefa tarefa) {
 		super();
 		this.idTarefa = tarefa.getId();
 	}
 
-	public IDTarefaDTO() {
+	public TarefaIdDTO() {
 		super();
 	}
 

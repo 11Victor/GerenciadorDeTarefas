@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.manager.tasks.dto.DepartamentoCountDTO;
 import br.com.manager.tasks.dto.DepartamentoDTO;
 import br.com.manager.tasks.model.Departamento;
 import br.com.manager.tasks.repository.DepartamentoRepository;
@@ -31,10 +32,10 @@ public class DepartamentoController {
 	@Autowired
 	private DepartamentoRepository departamentoRepository;
 
-	// Buscar todos departamento
-	@GetMapping("/get/departamento/all")
-	public ResponseEntity<List<Departamento>> getAll() {
-		return ResponseEntity.ok(departamentoService.findAll());
+	// Listar departamento e quantidade de pessoas e tarefas
+	@GetMapping("/get/departamentos")
+	public ResponseEntity<List<DepartamentoCountDTO>> getAll() {
+		return ResponseEntity.ok(departamentoService.listarDepartamentos());
 	}
 
 	// Cadastrar departamento
@@ -47,9 +48,8 @@ public class DepartamentoController {
 
 	// Editar departamento
 	@PutMapping("/put/departamento/{id}")
-	public ResponseEntity<Departamento> putDepartamento(@RequestBody DepartamentoDTO dto,@PathVariable("id") long id) {
-		return departamentoService.putDepartamento(dto, id)
-				.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
+	public ResponseEntity<Departamento> putDepartamento(@RequestBody DepartamentoDTO dto, @PathVariable("id") long id) {
+		return departamentoService.putDepartamento(dto, id).map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 

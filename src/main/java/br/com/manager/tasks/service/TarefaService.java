@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
-import br.com.manager.tasks.dto.IDTarefaDTO;
+import br.com.manager.tasks.dto.TarefaIdDTO;
 import br.com.manager.tasks.dto.TarefaDTO;
 import br.com.manager.tasks.model.Departamento;
 import br.com.manager.tasks.model.Pessoa;
@@ -65,7 +65,7 @@ public class TarefaService {
 	}
 
 	// Alocar uma pessoa na tarefa que tenha o mesmo departamento
-	public Optional<IDTarefaDTO> alocarPessoaTarefa(@RequestBody IDTarefaDTO alocarDTO, long id) {
+	public Optional<TarefaIdDTO> alocarPessoaTarefa(@RequestBody TarefaIdDTO alocarDTO, long id) {
 		Tarefa tarefa = tarefaRepository.getById(alocarDTO.getIdTarefa());
 		Pessoa pessoa = pessoaRepository.getById(id);
 		if (tarefaRepository.findById(id).isPresent() && pessoaRepository.findById(id).isPresent()
