@@ -32,7 +32,7 @@ public class SwaggerConfig {
 	}
 
 	public static ApiInfo metadata() {
-		return new ApiInfoBuilder().title("Perinity - Gerenciador de Tarefas")
+		return new ApiInfoBuilder().title("Gerenciador de Tarefas")
 				.description("API de gerenciamento de tarefas - Perinity").version("1.0.0").license("Apache License Version 2.0")
 				.licenseUrl("https://github.com/11Victor").contact(contact()).build();
 	}
