@@ -20,9 +20,9 @@ env:
   IBM_CLOUD_REGION: us-south
   ICR_NAMESPACE: ${{ secrets.ICR_NAMESPACE }}
   REGISTRY_HOSTNAME: us.icr.io
-  IMAGE_NAME: iks-test
+  IMAGE_NAME: tarefa
   IKS_CLUSTER: c9ti13sf0hb7c1kvuang
-  DEPLOYMENT_NAME: iks-test
+  DEPLOYMENT_NAME: tarefa
   PORT: 8080
 
 jobs:
