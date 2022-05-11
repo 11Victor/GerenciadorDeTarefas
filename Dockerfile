@@ -1,3 +1,5 @@
-FROM openjdk:8-jdk-alpine
-COPY target/*.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+FROM adoptopenjdk/openjdk8-openj9:alpine-slim
+
+COPY target/tasks.jar /
+
+ENTRYPOINT ["java", "-jar", "tasks.jar" ]
