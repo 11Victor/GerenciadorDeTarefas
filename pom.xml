@@ -66,6 +66,33 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<images>
+						<image>
+							<name>us.icr.io/tarefas/${project.name}</name>
+							<build>
+								<from>adoptopenjdk/openjdk8-openj9</from>
+								<entryPoint>
+									<exec>
+										<arg>java</arg>
+										<arg>-jar</arg>
+										<arg>/${project.build.finalName}.jar</arg>
+									</exec>
+								</entryPoint>
+								<assembly>
+									<targetDir>/</targetDir>
+									<mode>dir</mode>
+									<descriptorRef>artifact</descriptorRef>
+								</assembly>
+							</build>
+						</image>
+					</images>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
