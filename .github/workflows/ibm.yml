@@ -23,7 +23,7 @@ env:
   IMAGE_NAME: iks-test
   IKS_CLUSTER: c9ti13sf0hb7c1kvuang
   DEPLOYMENT_NAME: iks-test
-  PORT: 5001
+  PORT: 8080
 
 jobs:
   setup-build-publish-deploy:
@@ -47,7 +47,7 @@ jobs:
     # Authenticate with IBM Cloud CLI
     - name: Authenticate with IBM Cloud CLI
       run: |
-        ibmcloud login --apikey "${IBM_CLOUD_API_KEY}" -r "${IBM_CLOUD_REGION}" -g default
+        ibmcloud login --apikey "${IBM_CLOUD_API_KEY}" -r "${IBM_CLOUD_REGION}" -g Default
         ibmcloud cr region-set "${IBM_CLOUD_REGION}"
         ibmcloud cr login
 
