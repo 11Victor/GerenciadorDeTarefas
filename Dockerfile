@@ -1,5 +1,11 @@
-FROM adoptopenjdk/openjdk8-openj9:alpine-slim
+FROM openjdk:16-alpine3.13
 
-COPY . /target/tasks.jar app.jar
+WORKDIR /app
 
-ENTRYPOINT ["java", "-jar", "app.jar" ]
+COPY .mvn/ .mvn
+COPY mvnw pom.xml ./
+RUN ./mvnw dependency:go-offline
+
+COPY src ./src
+
+CMD ["./mvnw", "spring-boot:run"]
