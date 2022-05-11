@@ -1,5 +1,7 @@
 FROM openjdk:16-alpine3.13
 
+USER root
+
 WORKDIR /app
 
 COPY .mvn/ .mvn
