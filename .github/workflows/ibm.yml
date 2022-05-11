@@ -61,7 +61,7 @@ jobs:
     # Push the image to IBM Container Registry
     - name: Push the image to ICR
       run: |
-        docker push $REGISTRY_HOSTNAME/$ICR_NAMESPACE/$IMAGE_NAME:$GITHUB_SHA
+        mvn package docker:build docker:push
 
     # Deploy the Docker image to the IKS cluster
     - name: Deploy to IKS
