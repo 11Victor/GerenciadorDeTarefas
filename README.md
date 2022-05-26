@@ -107,7 +107,7 @@ docker-compose up
 
 <br>
 
-## 🗂️Getting Starteda
+## Getting Starteda
 **Para utilizar o banco de dados siga os seguintes passos**
 
 ### 1. Rode o comando abaixo no Terminal e copie o CONTAINER ID do postgres
