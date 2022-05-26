@@ -23,7 +23,7 @@
  <a href="#documentation">Documentation</a> •
  <a href="#installation ">Installation </a> •
  <a href="#getting-started">Get Started</a> •
- <a href="#postgreSQL">PostgreSQL</a>
+ <a href="#postgresql">PostgreSQL</a>
  
 </p>
 
