@@ -23,7 +23,7 @@
  <a href="#documentation">Documentation</a> •
  <a href="#installation ">Installation </a> •
  <a href="#getting-started">Get Started</a> •
- <a href="#postgre-sql">PostgreSQL</a>
+ <a href="#postgresql">PostgreSQL</a>
  
 </p>
 
@@ -107,7 +107,7 @@ docker-compose up
 
 <br>
 
-## 🗂️Postgre SQL
+## 🗂️PostgreSQL
 **Para utilizar o banco de dados siga os seguintes passos**
 
 ### 1. Rode o comando abaixo no Terminal e copie o CONTAINER ID do postgres
