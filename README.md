@@ -1,5 +1,5 @@
 <h1 align="center">
-	<img src="https://cdn-icons-png.flaticon.com/512/410/410909.png"  alt="Logo"  width="100"><br><br>
+	<img src="https://i.imgur.com/USFFl6m.png"  alt="Logo"  width="200"><br><br>
     Gerenciamento de Tarefas
 </h1>
 
@@ -20,9 +20,14 @@
  <a href="#about">About</a> •
  <a href="#features">Features</a> •
  <a href="#technologies">Technologies</a> • 
- <a href="#documentation">Documentation</a>
+ <a href="#documentation">Documentation</a> •
+ <a href="#installation ">Installation </a> •
+ <a href="#getting-started">Get Started</a> •
+ <a href="#postgreSQL">PostgreSQL</a>
  
 </p>
+
+<br>
 
 ## 📌About
 
@@ -32,6 +37,8 @@
     </p>
 </div>
 
+<br>
+
 ## 🚀Features
 
 - Criar, Editar e Apagar (Pessoa, Tarefa e Departamento)
@@ -40,6 +47,8 @@
 - Listar pessoas trazendo nome, departamento, total horas gastas nas tarefas.(get/pessoas)
 - Buscar pessoas por nome e retorna média de horas gastas por tarefa. (get/pessoas/gastos)
 - Listar departamento e quantidade de pessoas e tarefas (get/departamentos)
+
+<br>
 
 ## 🌐Technologies
 
@@ -51,6 +60,75 @@
 - PostgreSQL
 - Postman
 
+<br>
+
 ## 📃Documentation
 
-Link Documentação Swagger: https://tasks-documentacao.netlify.app/
+- Link Documentação Swagger: https://tasks-documentacao.netlify.app/
+
+<br>
+
+## 📕Installation
+**Você já deve ter instalado os seguintes programas**
+- Docker
+
+**Recomendações**
+- É recomendável que você tenha instalado o Google Chrome ou Edge
+- Eu recomendo usar o Eclipse como IDE de desenvolvimento
+
+**A instalação e inicialização são 3 etapas!**
+1. Clone este repositório
+2. Entre na pasta descompactada
+3. Rode o projeto com o Docker Compose
+
+### 1. Clone this repository
+```
+git clone https://github.com/11Victor/GerenciadorDeTarefas.git
+```
+---
+
+### 2. Acesse a pasta descompactada pelo terminal
+```
+cd <caminho da pasta>
+```
+---
+
+### 3. Inicialize o projeto com o Docker Compose
+```
+docker-compose up
+```
+
+
+<br>
+
+## 🎮Getting Started
+- Abra o navegador e entre no seguinte link: http://localhost:8080
+    - O link acima irá abrir o Swagger do projeto em questão!
+
+<br>
+
+## 🗂️PostgreSQL
+**Para utilizar o banco de dados siga os seguintes passos**
+
+### 1. Rode o comando abaixo no Terminal e copie o CONTAINER ID do postgres
+```
+docker ps
+```
+---
+### 2. Entre no banco de dados com o comando abaixo (Obs: substitua o CONTAINER ID)
+```
+docker exec -it ContainerID psql -U postgres tasks
+```
+---
+<br>
+
+**Alguns comandos do PostgreSQL**
+### Listar todas tabelas
+```
+\dt
+```
+---
+### Listar tabela departamento
+```
+select * from tb_departamento;
+```
