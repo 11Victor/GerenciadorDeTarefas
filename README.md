@@ -1,6 +1,6 @@
 <h1 align="center">
 	<img src="https://i.imgur.com/USFFl6m.png"  alt="Logo"  width="200"><br><br>
-    Gerenciamento de Tarefas
+    Gerenciador de Tarefas
 </h1>
 
 <div>
