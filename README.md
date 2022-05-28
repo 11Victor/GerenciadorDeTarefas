@@ -33,7 +33,7 @@
 
 <div>
     <p align="center">
-    API-REST de gerenciamento de tarefas com três tabelas(Pessoa, Tarefa e Departamento)
+    API-REST de gerenciamento de tarefas, analise de código com SonarQube e deploy realizado na AWS EC2!
     </p>
 </div>
 
@@ -59,6 +59,8 @@
 - Swagger
 - PostgreSQL
 - Postman
+- SonarQube
+- AWS-EC2
 
 <br>
 
