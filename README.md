@@ -72,16 +72,18 @@
 
 ## 📕Installation
 **Você já deve ter instalado os seguintes programas**
-- Docker
+- Docker <a href="https://docs.docker.com/get-docker/">(Veja como você instala o Docker)</a>
+- Maven <a href="https://maven.apache.org/install.html">(Veja como você instala o Maven)</a>
 
 **Recomendações**
 - É recomendável que você tenha instalado o Google Chrome ou Edge
 - Eu recomendo usar o Eclipse como IDE de desenvolvimento
 
-**A instalação e inicialização são 3 etapas!**
+**A instalação e inicialização são 4 etapas!**
 1. Clone este repositório
 2. Entre na pasta descompactada
-3. Rode o projeto com o Docker Compose
+3. Build com Maven
+4. Rode o projeto com o Docker Compose
 
 ### 1. Clone this repository
 ```
@@ -95,10 +97,26 @@ cd <caminho da pasta>
 ```
 ---
 
-### 3. Inicialize o projeto com o Docker Compose
+### 3. Build o projeto com Maven - (Pasta raiz)
+```
+mvn clean install
+```
+- Observações:
+    - mvn ➡️ Você está chamando o executável, o que significa que você precisa do Maven instalado em sua máquina.
+
+    - clean ➡️ Excluirá todos os arquivos e recursos Java .class compilados anteriormente (como .properties) no projeto, sua compilação começará do zero.
+
+    - install ➡️ Compilar, testar e empacotar seu projeto Java e até mesmo instalar/copiar seu arquivo .jar/.war construído em seu repositório Maven local. <a href="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html"> (Veja o Ciclo de vida do Maven )</a>
+
+---
+
+### 4. Inicialize o projeto com o Docker Compose - (Pasta raiz)
 ```
 docker-compose up
 ```
+- Observações:
+    - O Compose é uma ferramenta para definir e executar aplicativos Docker de vários contêineres. Com o Compose, você usa um arquivo YAML para configurar os serviços do seu aplicativo. Então, com um único comando, você cria e inicia todos os serviços da sua configuração. <a href="https://docs.docker.com/compose/reference/up/">(Veja sobre docker-compose up)</a> 
+
 
 
 <br>
