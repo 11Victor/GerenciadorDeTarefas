@@ -40,7 +40,7 @@ public class TarefaController {
 
 	// Cadastrar tarefa
 	@PostMapping("/post/tarefas")
-	public ResponseEntity<Tarefa> postTarefa(@RequestBody TarefaDTO dto) {
+	public ResponseEntity<TarefaDTO> postTarefa(@RequestBody TarefaDTO dto) {
 		return tarefaService.postTarefa(dto).map(resp -> ResponseEntity.status(HttpStatus.CREATED).body(resp))
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}

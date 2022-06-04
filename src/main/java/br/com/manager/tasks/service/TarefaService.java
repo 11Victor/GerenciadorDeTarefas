@@ -31,14 +31,15 @@ public class TarefaService {
 	PessoaRepository pessoaRepository;
 
 	// Cadastrar nova tarefa
-	public Optional<Tarefa> postTarefa(@RequestBody TarefaDTO dto) {
+	public Optional<TarefaDTO> postTarefa(@RequestBody TarefaDTO dto) {
 		if (tarefaRepository.findAllByTitulo(dto.getTitulo()).isEmpty()
 				&& departamentoRepository.findById(dto.getIdDepartamento()).isPresent()) {
 			Departamento departamento = new Departamento();
 			departamento.setId(dto.getIdDepartamento());
 			Tarefa tarefa = new Tarefa(dto.getTitulo(), dto.getDescricao(), dto.getPrazo(), dto.getDuracao(),
 					departamento);
-			return Optional.of(tarefaRepository.save(tarefa));
+                        tarefaRepository.save(tarefa);
+			return Optional.of(dto);
 		} else {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
 					"Possiveis erros: Nome da Tarefa já existente ou Departamento não localizado!!!!", null);
