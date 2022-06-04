@@ -72,7 +72,7 @@ public class TarefaService {
 		if (tarefaRepository.findById(id).isPresent() && pessoaRepository.findById(id).isPresent()
 				&& tarefa.getIdDepartamento() == pessoa.getIdDepartamento()) {
 			tarefa.setPessoa(pessoa);
-			Optional.of(tarefaRepository.save(tarefa));
+			tarefaRepository.save(tarefa);
 			return Optional.of(alocarDTO);
 		} else {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
@@ -85,7 +85,7 @@ public class TarefaService {
 		if (tarefaRepository.findById(finalizarTarefa).isPresent()) {
 			Tarefa tarefa = tarefaRepository.getById(finalizarTarefa);
 			tarefa.setFinalizado(true);
-			Optional.of(tarefaRepository.save(tarefa));
+			tarefaRepository.save(tarefa);
 			return Optional.of(finalizarTarefa);
 		} else {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "ID não localizado!!!!", null);
