@@ -3,7 +3,7 @@
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=GerenciadorDeTarefas&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=GerenciadorDeTarefas)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=GerenciadorDeTarefas&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=GerenciadorDeTarefas)
 
-<br><br><br>
+<br><br>
 
 <h1 align="center">
 	<img src="https://i.imgur.com/USFFl6m.png"  alt="Logo"  width="200"><br><br>
