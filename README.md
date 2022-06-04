@@ -1,3 +1,10 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=GerenciadorDeTarefas&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=GerenciadorDeTarefas)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=GerenciadorDeTarefas&metric=bugs)](https://sonarcloud.io/summary/new_code?id=GerenciadorDeTarefas)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=GerenciadorDeTarefas&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=GerenciadorDeTarefas)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=GerenciadorDeTarefas&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=GerenciadorDeTarefas)
+
+<br><br><br>
+
 <h1 align="center">
 	<img src="https://i.imgur.com/USFFl6m.png"  alt="Logo"  width="200"><br><br>
     Gerenciador de Tarefas
