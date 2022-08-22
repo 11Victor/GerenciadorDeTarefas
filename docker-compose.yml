@@ -1,18 +1,41 @@
 version: '3.1'
 services:
-  app:
-    container_name: tasks
-    image: tasks
-    build: ./
+  db:
+    image: postgres:13-alpine
+    restart: always
+    volumes: 
+      - ./db:/var/lib/postgresql/data
     ports:
-      - "8080:8080"
-    depends_on:
-      - postgresqldb
-  postgresqldb:
-    image: postgres
-    ports:
-      - "5432:5432"
+      - 5432:5432
     environment:
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=tasks
+      POSTGRES_USER: victor
+      POSTGRES_PASSWORD: qwdegrr3
+      POSTGRES_DB: tasks
+  # backend:
+  #   image: amazoncorretto:11-alpine
+  #   volumes:
+  #     - ./backend:/backend
+  #   ports: 
+  #     - 8080:8080
+  #   depends_on:
+  #     - db
+  #   command: java -jar /backend/strategicfinance.jar
+  # frontend:
+  #   image: nginx:stable-alpine
+  #   volumes:
+  #     - ./frontend/build:/usr/share/nginx/html
+  #     - ./frontend/nginx:/etc/nginx/conf.d
+  #   ports: 
+  #     - 80:80
+  mail:
+    image: maildev/maildev
+    restart: always
+    environment:
+      - TZ=America/Sao_Paulo
+      - MAILDEV_WEB_PORT=1080
+      - MAILDEV_SMTP_PORT=1025
+      - MAILDEV_WEB_USER=victor
+      - MAILDEV_WEB_PASS=teste
+    ports:
+      - "1080:1080"
+      - "1025:1025"

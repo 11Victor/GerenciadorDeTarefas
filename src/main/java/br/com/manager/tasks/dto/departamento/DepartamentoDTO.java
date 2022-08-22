@@ -1,4 +1,4 @@
-package br.com.manager.tasks.dto;
+package br.com.manager.tasks.dto.departamento;
 
 import java.io.Serializable;
 

@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
-import br.com.manager.tasks.dto.DepartamentoCountDTO;
-import br.com.manager.tasks.dto.DepartamentoDTO;
+import br.com.manager.tasks.dto.departamento.DepartamentoCountDTO;
+import br.com.manager.tasks.dto.departamento.DepartamentoDTO;
 import br.com.manager.tasks.model.Departamento;
 import br.com.manager.tasks.repository.DepartamentoRepository;
 

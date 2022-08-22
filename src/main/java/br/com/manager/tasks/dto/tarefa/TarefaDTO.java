@@ -1,4 +1,4 @@
-package br.com.manager.tasks.dto;
+package br.com.manager.tasks.dto.tarefa;
 
 import java.io.Serializable;
 import java.time.LocalDate;

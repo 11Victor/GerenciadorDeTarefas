@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
-import br.com.manager.tasks.dto.TarefaIdDTO;
-import br.com.manager.tasks.dto.TarefaDTO;
+import br.com.manager.tasks.dto.tarefa.TarefaDTO;
+import br.com.manager.tasks.dto.tarefa.TarefaIdDTO;
 import br.com.manager.tasks.model.Departamento;
 import br.com.manager.tasks.model.Pessoa;
 import br.com.manager.tasks.model.Tarefa;

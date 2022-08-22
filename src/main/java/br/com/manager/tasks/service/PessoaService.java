@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
-import br.com.manager.tasks.dto.PessoaDTO;
-import br.com.manager.tasks.dto.PessoaHorasDTO;
-import br.com.manager.tasks.dto.PessoaMediaDTO;
-import br.com.manager.tasks.dto.PessoaMediaRetornoDTO;
+import br.com.manager.tasks.dto.user.PessoaDTO;
+import br.com.manager.tasks.dto.user.PessoaHorasDTO;
+import br.com.manager.tasks.dto.user.PessoaMediaDTO;
+import br.com.manager.tasks.dto.user.PessoaMediaRetornoDTO;
 import br.com.manager.tasks.model.Departamento;
 import br.com.manager.tasks.model.Pessoa;
 import br.com.manager.tasks.repository.DepartamentoRepository;

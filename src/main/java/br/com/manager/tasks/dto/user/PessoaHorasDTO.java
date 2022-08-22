@@ -1,4 +1,4 @@
-package br.com.manager.tasks.dto;
+package br.com.manager.tasks.dto.user;
 
 import java.io.Serializable;
 import java.util.stream.Collectors;
